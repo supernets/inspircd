@@ -204,7 +204,7 @@ RUN mkdir -p /etc/inspircd /var/lib/inspircd /etc/ssl/inspircd /var/log/inspircd
 
 ADD inspircd.conf /etc/inspircd
 
-ADD include.conf /etc/inspircd
+ADD include.default.conf /etc/inspircd/include.conf
 
 ADD GeoLite2-ASN.mmdb /etc/inspircd
 

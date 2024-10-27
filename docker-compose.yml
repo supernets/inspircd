@@ -1,0 +1,5 @@
+services:
+  ircd:
+    build: .
+    network_mode: "host"
+    env_file: "config.env"
