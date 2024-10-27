@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+ARG BUILD_SERVER_NAME="irc.lame-network.local"
+
 ENV ADMIN_EMAIL="no-reply@lame-netwoork.local"
 
 ENV SID="01A"
@@ -215,7 +217,7 @@ RUN touch /etc/inspircd/oper.motd.txt
 RUN openssl genrsa -out /etc/ssl/inspircd/server.key
 
 RUN openssl req -new -key /etc/ssl/inspircd/server.key -out /etc/ssl/inspircd/server.csr \
-    -subj "/C=US/ST=Washington/L=Seattle/O=LameNetwork/OU=IT Department/CN=lame-network.local"
+    -subj "/C=US/ST=Washington/L=Seattle/O=LameNetwork/OU=IT Department/CN=$SERVER_NAME"
 
 RUN openssl x509 -req -days 365 -in /etc/ssl/inspircd/server.csr -signkey /etc/ssl/inspircd/server.key -out /etc/ssl/inspircd/server.crt
 

@@ -1,9 +1,14 @@
 services:
-  ircd:
-    build: .
+  ircd_linked:
+    build:
+        context: .
+        args:
+            BUILD_SERVER_NAME: ${SERVER_NAME}
+    image: inspi4
     network_mode: "host"
     env_file: "config.env"
     volumes:
+        - ./links.conf:/etc/inspircd/links.conf:ro
         - ssl:/etc/ssl/inspircd
         - data:/var/lib/inspircd
         - log:/var/log/inspircd
