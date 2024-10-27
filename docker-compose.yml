@@ -1,6 +1,10 @@
 services:
   ircd:
-    build: .
+    build:
+        context: .
+        args:
+            BUILD_SERVER_NAME: ${SERVER_NAME}
+    image: inspi4
     network_mode: "host"
     env_file: "config.env"
     volumes:
