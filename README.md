@@ -15,7 +15,7 @@
 - ~~`docker run -it --rm -e 'DEFAULT_BLOCK_HOST_MASK="nothing"' -net host -v $(pwd)/links.conf:/etc/inspircd/links.conf:ro inspi4`~~
 
 # Linking 
-- Run `docker exec -it irc_ircd_linked_1 openssl x509 -sha256 -fingerprint -in /etc/ssl/inspircd/server.crt  | tr -d ":" | tr '[:upper:]' '[:lower:]'` 
+- Run `docker exec -it ircd_ircd_linked_1 openssl x509 -sha256 -fingerprint -in /etc/ssl/inspircd/server.crt  | tr -d ":" | tr '[:upper:]' '[:lower:]'` 
 to get the fingerprints.
 
 - On `hub.netcrave.network` add something like this to the `include.conf`:
