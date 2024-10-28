@@ -13,8 +13,8 @@ services:
         - log:/var/log/inspircd
 volumes:
     data:
-        name: data
+        name: inspi4_data
     ssl:
-        name: ssl
+        name: inspi4_ssl
     log:
-        name: log
+        name: inspi4_log
