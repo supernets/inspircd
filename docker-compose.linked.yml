@@ -8,7 +8,7 @@ services:
     network_mode: "host"
     env_file: "config.env"
     volumes:
-        - ./links.conf:/etc/inspircd/links.conf:ro
+        - ./include.conf:/etc/inspircd/include.conf:ro
         - ssl:/etc/ssl/inspircd
         - data:/var/lib/inspircd
         - log:/var/log/inspircd
