@@ -56,3 +56,18 @@ to get the fingerprints.
       statshidden="no"
       timeout="&env.LINK_TIMEOUT;">
 ```
+
+# Linking with services
+- Doesn't work yet: https://github.com/atheme/atheme/issues/904
+```
+<link allowmask="*"
+      bind="127.0.0.1"
+      hidden="no"
+      ipaddr="127.0.0.1"
+      name="services.netcrave.network"
+      port="7001"
+      recvpass="&env.LINK_RECV_PASSWORD;"
+      sendpass="&env.LINK_SEND_PASSWORD;"
+      statshidden="no"
+      timeout="&env.LINK_TIMEOUT;">
+```
