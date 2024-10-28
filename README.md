@@ -4,7 +4,6 @@
 - if you are not starting from scratch. delete stale containers and: `docker rmi inspi4` and `docker volume rm inspi4_ssl` 
 - copy `config.env.exmaple` to `config.env` and edit 
 - optional: if you intend to link, copy `include.default.conf` to `include.conf` and edit (see linking section below.)
-- build: `docker-compose -f docker-compose.standalone.yml build` use: `docker-compose.linked.yml` if you intend to link.
 - start: `docker-compose -f docker-compose.standalone.yml up -d` also use the linked variant if you intend to link.
 
 - ~~`docker build -t inspi4 -t inspi4:latest .`~~
