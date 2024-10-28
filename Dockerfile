@@ -208,7 +208,7 @@ ADD inspircd.conf /etc/inspircd
 
 ADD include.default.conf /etc/inspircd/include.conf
 
-ADD GeoLite2-ASN.mmdb /etc/inspircd
+ADD GeoLite2-Country.mmdb /etc/inspircd
 
 RUN touch /etc/inspircd/motd.txt
 
