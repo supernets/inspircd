@@ -12,8 +12,6 @@ RUN useradd --system --shell /bin/bash atheme -g atheme
 
 WORKDIR /tmp
 
-RUN apt -y install libperl-dev
-
 RUN git clone https://github.com/atheme/atheme.git
 
 WORKDIR /tmp/atheme
@@ -26,7 +24,7 @@ RUN make -j$(nproc)
 
 RUN make install
 
-RUN mkdir -p /etc/atheme -p /etc/ssl/atheme -p /var/lib/atheme -p /var/log/atheme 
+RUN mkdir -p /etc/atheme -p /etc/ssl/atheme -p /var/log/atheme 
 
 RUN mv /usr/local/etc /usr/local/etc_old
 
@@ -43,7 +41,7 @@ RUN openssl req -new -key /etc/ssl/atheme/server.key -out /etc/ssl/atheme/server
 
 RUN openssl x509 -req -days 365 -in /etc/ssl/atheme/server.csr -signkey /etc/ssl/atheme/server.key -out /etc/ssl/atheme/server.crt
 
-RUN chown -R atheme:atheme /etc/atheme /etc/ssl/atheme /var/log/atheme /var/lib/atheme
+RUN chown -R atheme:atheme /etc/atheme /etc/ssl/atheme /var/log/atheme
 
 WORKDIR /
 
@@ -54,8 +52,6 @@ RUN /usr/local/bin/atheme-services -b ; true
 VOLUME /etc/atheme
 
 VOLUME /etc/ssl/atheme
-
-VOLUME /var/lib/atheme
 
 VOLUME /var/log/atheme
 
