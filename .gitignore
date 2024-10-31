@@ -1,2 +1,4 @@
 config.env
 include.conf
+motd.txt
+oper.motd.txt
