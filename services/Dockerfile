@@ -12,7 +12,7 @@ RUN useradd --system --shell /bin/bash atheme -g atheme
 
 WORKDIR /tmp
 
-RUN git clone https://github.com/atheme/atheme.git
+RUN git clone https://github.com/paigeadelethompson/atheme.git -b inspircd
 
 WORKDIR /tmp/atheme
 
@@ -55,4 +55,4 @@ VOLUME /etc/ssl/atheme
 
 VOLUME /var/log/atheme
 
-ENTRYPOINT ["/usr/local/bin/atheme-services", "-p", "/tmp/atheme.pid", "-n"]
+ENTRYPOINT ["/usr/local/bin/atheme-services", "-p", "/tmp/atheme.pid", "-n", "-d"]

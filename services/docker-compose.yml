@@ -10,6 +10,7 @@ services:
     volumes:
         - data:/etc/atheme
         - ./include.conf:/etc/atheme/include.conf:ro
+        - ./atheme.conf:/etc/atheme/atheme.conf:ro
         - ssl:/etc/ssl/atheme
         - log:/var/log/atheme
 volumes:
