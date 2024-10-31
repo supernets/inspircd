@@ -7,8 +7,10 @@ services:
     image: inspi4
     network_mode: "host"
     env_file: "config.env"
-    command: /usr/local/bin/inspircd -c /etc/inspircd/inspircd.conf -F -d
+    command: /usr/local/bin/inspircd -c /etc/inspircd/inspircd.conf -F
     volumes:
+        - ./motd.txt:/etc/inspircd/motd.txt:ro
+        - ./oper.motd.txt:/etc/inspircd/oper.motd.txt:ro
         - ./include.conf:/etc/inspircd/include.conf:ro
         - ssl:/etc/ssl/inspircd
         - data:/var/lib/inspircd
