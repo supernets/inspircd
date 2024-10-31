@@ -1,0 +1,21 @@
+services:
+  anope:
+    build:
+        context: .
+        args:
+            BUILD_SERVER_NAME: ${SERVER_NAME}
+    image: anope
+    network_mode: "host"
+    env_file: "config.env"
+    volumes:
+        - data:/var/lib/anope
+        - ./include.conf:/etc/anope/include.conf:ro
+        - ssl:/etc/ssl/anope
+        - log:/var/log/anope
+volumes:
+    data:
+        name: anope_data
+    ssl:
+        name: anope_ssl
+    log:
+        name: anope_log
