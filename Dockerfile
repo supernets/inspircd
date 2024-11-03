@@ -306,9 +306,7 @@ ENV JOIN_FLOOD_SPLIT_WAIT="32s"
 
 ENV KNOCK_NOTIFY="both"
 
-ENV LIST_MAX_SIZE="512"
-
-ENV LIST_NORMAL_SIZE="256"
+ENV LIST_MAX_SIZE="100"
 
 ENV MESSAGE_FLOOD_NOTICE="1.0"
 
@@ -448,13 +446,17 @@ RUN mkdir -p /etc/inspircd /var/lib/inspircd /etc/ssl/inspircd /var/log/inspircd
 
 ADD inspircd.conf /etc/inspircd
 
-ADD include.default.conf /etc/inspircd/include.conf
+ADD modules.conf /etc/inspircd
+
+ADD help.conf /etc/inspircd
+
+ADD custom/ /etc/inspircd/custom
 
 ADD GeoLite2-Country.mmdb /etc/inspircd
 
 ADD motd.txt /etc/inspircd/motd.txt
 
-ADD oper.motd.txt /etc/inspircd/oper.motd.txt 
+ADD oper.motd.txt /etc/inspircd/oper.motd.txt
 
 RUN openssl genrsa -out /etc/ssl/inspircd/server.key
 
@@ -475,4 +477,4 @@ USER inspircd
 
 WORKDIR /
 
-CMD /usr/local/bin/inspircd -c /etc/inspircd/inspircd.conf -F 
+CMD /usr/local/bin/inspircd -c /etc/inspircd/inspircd.conf -F

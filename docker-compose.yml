@@ -1,0 +1,22 @@
+services:
+  leaf:
+    build:
+      context: .
+      args:
+        BUILD_SERVER_NAME: ${SERVER_NAME}
+    image: inspi4
+    network_mode: "host"
+    env_file: "config.env"
+    command: /usr/local/bin/inspircd -c /etc/inspircd/inspircd.conf -F
+    volumes:
+      - ./custom:/etc/inspircd/custom:ro
+      - ssl:/etc/ssl/inspircd
+      - data:/var/lib/inspircd
+      - log:/var/log/inspircd
+volumes:
+  data:
+    name: inspi4_data
+  ssl:
+    name: inspi4_ssl
+  log:
+    name: inspi4_log
