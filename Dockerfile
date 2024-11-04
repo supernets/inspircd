@@ -1,6 +1,8 @@
-FROM ubuntu:latest
-
 ARG BUILD_SERVER_NAME="irc.lame-network.local"
+
+ARG UBUNTU_VERSION="noble"
+
+FROM ubuntu:${UBUNTU_VERSION}
 
 ENV ADMIN_EMAIL="no-reply@lame-netwoork.local"
 
@@ -174,15 +176,13 @@ ENV SERVICES_ULINE="services.lame-network.local"
 
 ENV WS_ORIGIN_ALLOW="irc.lame-network.local"
 
-ENV DEFAULT_BLOCK_HOST_MASK="*@*"
-
 ENV LINK_RECV_PASSWORD="changeme"
 
 ENV LINK_SEND_PASSWORD="changeme"
 
 ENV LINK_TIMEOUT=3600
 
-ENV CLOAK_KEY="changeme"
+ENV CLOAK_KEY="changemechangemechangemechangeme"
 
 ENV CLOAK_IGNORE_CASE="no"
 
@@ -306,9 +306,7 @@ ENV JOIN_FLOOD_SPLIT_WAIT="32s"
 
 ENV KNOCK_NOTIFY="both"
 
-ENV LIST_MAX_SIZE="512"
-
-ENV LIST_NORMAL_SIZE="256"
+ENV LIST_MAX_SIZE="100"
 
 ENV MESSAGE_FLOOD_NOTICE="1.0"
 
@@ -438,6 +436,8 @@ RUN git clone https://github.com/inspircd/inspircd.git
 
 WORKDIR /tmp/inspircd
 
+RUN git checkout -b master 7734b2e
+
 RUN ./configure --gid inspircd --uid inspircd --development --prefix=/usr/local
 
 RUN ./modulemanager list | awk '{print $1}' | xargs -i ./modulemanager install {} ; true
@@ -448,13 +448,13 @@ RUN mkdir -p /etc/inspircd /var/lib/inspircd /etc/ssl/inspircd /var/log/inspircd
 
 ADD inspircd.conf /etc/inspircd
 
-ADD include.default.conf /etc/inspircd/include.conf
+ADD modules.conf /etc/inspircd
+
+ADD help.conf /etc/inspircd
+
+ADD custom/ /etc/inspircd/custom
 
 ADD GeoLite2-Country.mmdb /etc/inspircd
-
-ADD motd.txt /etc/inspircd/motd.txt
-
-ADD oper.motd.txt /etc/inspircd/oper.motd.txt 
 
 RUN openssl genrsa -out /etc/ssl/inspircd/server.key
 
@@ -475,4 +475,4 @@ USER inspircd
 
 WORKDIR /
 
-CMD /usr/local/bin/inspircd -c /etc/inspircd/inspircd.conf -F 
+CMD /usr/local/bin/inspircd -c /etc/inspircd/inspircd.conf -F
