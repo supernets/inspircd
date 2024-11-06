@@ -1,1 +1,7 @@
-*
+motd.txt
+oper.motd.txt
+include.conf
+*.crt
+*.key
+dh.pem
+!ca.crt
