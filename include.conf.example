@@ -109,6 +109,43 @@
 #        suffix="onion"
 #        class="tor">
 
+# uncomment the following to setup WebIRC
+# <gateway type="webirc"
+#          mask="localhost">
+
+# and enable the corresponding connect block: 
+# <connect commandrate="&env.COMMAND_RATE;"
+#          fakelag="&env.FAKE_LAG;"
+#          hardsendq="&env.HARD_SENDQ;"
+#          maxchans="&env.MAX_CHANS;"
+#          pingfreq="&env.PING_FREQ;"
+#          recvq="&env.RECVQ;"
+#          softsendq="&env.SOFT_SENDQ;"
+#          threshold="&env.COMMAND_RATE_THRESHOLD;"
+#          timeout="&env.COMMAND_RATE_THRESHOLD_TIMEOUT;"
+#          usecloak="yes"
+#          useconnflood="&env.USE_CONN_FLOOD;"
+#          usednsbl="no"
+#          useident="no"
+#          resolvehostnames="no"
+#          useconnectban="no"
+#          autojoin="#blackhole"
+#          globalmax="&env.GLOBAL_MAX;"
+#          localmax="&env.LOCAL_MAX;"
+#          maxconnwarn="&env.MAX_CONN_WARN;"
+#          modes="&env.DEFAULT_USER_MODES;"
+#          name="webirc"
+#          webirc="localhost"
+#          port="7001">
+
+# uncomment this line to masquerade tor users with a cloaked hostmask (uncloaked is 
+# an fc00::/7 address that corresponds to a Tor circuit ID provided via PROXY 
+# protocol)
+
+# <cloak method="hmac-sha256"
+#        suffix="webirc"
+#        class="webirc">
+
 <bind address="127.0.0.1"
       port="8000"
       type="httpd">
