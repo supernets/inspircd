@@ -1,3 +1,20 @@
+<include file="/etc/inspircd/codepages/rfc1459.conf">
+
+#<autoconnect period="8s"
+#             server="temple.supernets.org">
+
+#<link allowmask="*"
+#      bind="100.83.238.47"
+#      hidden="no"
+#      sslprofile="defaultssl"
+#      ipaddr="100.79.209.72"
+#      name="temple.supernets.org"
+#      port="&env.SERVER_SSL_PORT;"
+#      recvpass="&env.LINK_RECV_PASSWORD;"
+#      sendpass="&env.LINK_SEND_PASSWORD;"
+#      statshidden="no"
+#      timeout="&env.LINK_TIMEOUT;">
+
 <sslprofile certfile="/etc/ssl/inspircd/server.crt"
             compression="no"
             keyfile="/etc/ssl/inspircd/server.key"
@@ -9,8 +26,22 @@
             requestclientcert="no"
             provider="gnutls">
 
-<badhost host="*@*"
-         reason="default hostmask block">
+#<sslprofile certfile="/etc/inspircd/custom/server.crt"
+#            compression="no"
+#            keyfile="/etc/ssl/inspircd/custom/server.key"
+#            name="supernets_ssl"
+#            tlsv11="no"
+#            tlsv12="yes"
+#            tlsv13="yes"
+#            renegotiation="no"
+#            requestclientcert="no"
+#            provider="gnutls">
+
+#<badhost host="*@*"
+#         reason="default hostmask block">
+
+<exception host="*@100.64.0.0/10"
+           reason="tailscale network">
 
 <exception host="*@127.0.0.1/32"
            reason="Local IRC client">
@@ -33,7 +64,7 @@
           introtext="server loadavg:"
           name="LOADAVG">
 
-<bind address="*"
+<bind address="127.0.0.1"
       port="8000"
       type="httpd">
 
@@ -45,10 +76,6 @@
 <bind address="*"
       port="&env.PORT;"
       type="clients">
-
-<bind address="*"
-      port="7001"
-      type="servers">
 
 <bind address="*"
       port="&env.SERVER_SSL_PORT;"
@@ -68,7 +95,6 @@
          fakelag="&env.FAKE_LAG;"
          hardsendq="&env.HARD_SENDQ;"
          maxchans="&env.MAX_CHANS;"
-         motd="defaultmotd"
          name="all"
          pingfreq="&env.PING_FREQ;"
          recvq="&env.RECVQ;"
@@ -118,21 +144,6 @@
           path="/*"
           types="password"
           username="&env.HTTP_ACL_USERNAME;">
-
-<autoconnect period="8s"
-             server="vps-1.lame-network.local">
-
-<link allowmask="*"
-      bind="1.2.3.4"
-      hidden="no"
-      sslprofile="defaultssl"
-      ipaddr="4.2.3.1"
-      name="vps-1.lame-network.local"
-      port="&env.SERVER_SSL_PORT;"
-      recvpass="&env.LINK_RECV_PASSWORD;"
-      sendpass="&env.LINK_SEND_PASSWORD;"
-      statshidden="no"
-      timeout="&env.LINK_TIMEOUT;">
 
 <ident prefixunqueried="&env.IDENT_PREFIX_UNQUERIED;"
        timeout="&env.IDENT_TIMEOUT;">

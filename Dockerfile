@@ -1,10 +1,10 @@
-ARG BUILD_SERVER_NAME="irc.lame-network.local"
+ARG BUILD_SERVER_NAME="*"
 
 ARG UBUNTU_VERSION="noble"
 
 FROM ubuntu:${UBUNTU_VERSION}
 
-ENV ADMIN_EMAIL="no-reply@lame-netwoork.local"
+ENV ADMIN_EMAIL="no-reply@lame-network.local"
 
 ENV SID="01A"
 
@@ -20,7 +20,7 @@ ENV ADMIN_PASSWORD="changeme"
 
 ENV COMMAND_RATE="128000"
 
-ENV FAKE_LAG="on"
+ENV FAKE_LAG="off"
 
 ENV HARD_SENDQ="1M"
 
@@ -36,7 +36,7 @@ ENV COMMAND_RATE_THRESHOLD="128"
 
 ENV COMMAND_RATE_THRESHOLD_TIMEOUT="16"
 
-ENV USE_CONN_FLOOD="yes"
+ENV USE_CONN_FLOOD="no"
 
 ENV USE_DNSBL="yes"
 
@@ -48,19 +48,19 @@ ENV LOCAL_MAX="16"
 
 ENV MAX_CONN_WARN="yes"
 
-ENV DEFAULT_USER_MODES="+xWz"
+ENV DEFAULT_USER_MODES="+x"
 
 ENV PORT="6667"
 
 ENV RESOLVE_HOST_NAMES="yes"
 
-ENV USE_CONNECT_BAN="yes"
+ENV USE_CONNECT_BAN="no"
 
-ENV SSL_USER_MODES="+xWz"
+ENV SSL_USER_MODES="+xz"
 
 ENV SSL_PORT="6697"
 
-ENV AUTHENTICATED_USER_MODES="+xwWz"
+ENV AUTHENTICATED_USER_MODES="+xz"
 
 ENV SERVER_SSL_PORT="7000"
 
@@ -168,8 +168,6 @@ ENV NET_ADMIN_VHOST="oper/admin.lame-network.local"
 
 ENV GLOBAL_OP_VHOST="oper/op.lame-network.local"
 
-ENV HOPM_VHOST="oper/hopm.lame-network.local"
-
 ENV HELPER_VHOST="oper/helper.lame-network.local"
 
 ENV SERVICES_ULINE="services.lame-network.local"
@@ -183,10 +181,6 @@ ENV LINK_SEND_PASSWORD="changeme"
 ENV LINK_TIMEOUT=3600
 
 ENV CLOAK_KEY="changemechangemechangemechangeme"
-
-ENV CLOAK_IGNORE_CASE="no"
-
-ENV CLOAK_MODE="full"
 
 ENV CLOAK_PREFIX="cloak/"
 
@@ -208,7 +202,7 @@ ENV BOT_MODE_FORCE_NOTICE="no"
 
 ENV CHAN_FILTER_HIDE_MASK="yes"
 
-ENV CHAN_FILTER_MAX_LEN="512"
+ENV CHAN_FILTER_MAX_LEN="250"
 
 ENV CHAN_FILTER_NOTIFY_USER="yes"
 
@@ -237,8 +231,6 @@ ENV CHAN_NAMES_DENY_RANGE="1-47,58-64,91-96,123-255"
 ENV CHANNELS_OPERS="4294967295"
 
 ENV CHANNELS_USERS="4294967295"
-
-ENV CODE_PAGE="ascii"
 
 ENV CONNECT_BAN_BOOT_WAIT="128"
 
@@ -444,7 +436,19 @@ RUN ./modulemanager list | awk '{print $1}' | xargs -i ./modulemanager install {
 
 RUN make -j$(nproc) install
 
-RUN mkdir -p /etc/inspircd /var/lib/inspircd /etc/ssl/inspircd /var/log/inspircd
+RUN mkdir -p /etc/inspircd/custom /var/lib/inspircd /etc/ssl/inspircd /var/log/inspircd /etc/inspircd/codepages
+
+WORKDIR docs/conf/codepages
+
+RUN cp ascii.example.conf /etc/inspircd/codepages/ascii.conf
+
+RUN cat iso-8859-1.example.conf | grep -v "include" > /etc/inspircd/codepages/iso-8859-1.conf
+
+RUN cat iso-8859-2.example.conf | grep -v "include" > /etc/inspircd/codepages/iso-8859-2.conf
+
+RUN cat rfc1459.example.conf | grep -v "include" > /etc/inspircd/codepages/rfc1459.conf
+
+RUN cat strict-rfc1459.example.conf | grep -v "include" > /etc/inspircd/codepages/strict-rfc1459.conf
 
 ADD inspircd.conf /etc/inspircd
 
@@ -452,7 +456,11 @@ ADD modules.conf /etc/inspircd
 
 ADD help.conf /etc/inspircd
 
-ADD custom/ /etc/inspircd/custom
+ADD include.conf.example /etc/inspircd/custom/include.conf
+
+RUN touch /etc/inspircd/motd.txt
+
+RUN touch /etc/inspircd/oper.motd.txt
 
 ADD GeoLite2-Country.mmdb /etc/inspircd
 
