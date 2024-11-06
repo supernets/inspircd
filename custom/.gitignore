@@ -3,5 +3,6 @@ oper.motd.txt
 include.conf
 *.crt
 *.key
-dh.pem
+*.pem
 !ca.crt
+!crl.pem
