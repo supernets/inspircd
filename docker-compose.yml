@@ -1,5 +1,6 @@
 services:
   ircd:
+    restart: on-failure:3
     build:
       context: .
     image: inspi4
