@@ -70,3 +70,18 @@ to get the SSL fingerprints, the `fingerprint` refers to the remote SSL certific
       statshidden="no"
       timeout="&env.LINK_TIMEOUT;">
 ```
+
+# easyrsa
+On the hub:
+- `./easyrsa init-pki` 
+- `./easyrsa build-ca`
+- `./easyrsa build-server-full hub.stuff.ts.net`
+- `./easyrsa gen-crl`
+- `./easyrsa gen-dh`
+
+The `.gitignore` takes care of keeping secrets out of the git repo:
+
+- copy `ca.crt`, `crl.pem`, and `dh.pem` to `custom/`
+- `chown -R 999 custom/`
+- copy hub cert and key to `custom/server.crt` and `custom/server.key`
+- manually copy certs and keys as well as `dh.pem` to each leaf. 
