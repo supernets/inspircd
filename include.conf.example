@@ -64,6 +64,51 @@
           introtext="server loadavg:"
           name="LOADAVG">
 
+# from the torrc man page (latest / newer) 
+# HiddenServiceExportCircuitID protocol
+# The onion service will use the given protocol to expose the global circuit identifier 
+# of each inbound client circuit. The only protocol supported right now 'haproxy'. 
+# This option is only for v3 services. (Default: none)
+#
+# Create a hidden service and set HiddenServiceExportCircuitID to 'haproxy' in the
+# torrc, then enable this binding:
+#
+# <bind address="127.0.0.1"
+#      port="7001"
+#      hook="haproxy">
+
+# and enable the corresponding connect block: 
+# <connect commandrate="&env.COMMAND_RATE;"
+#          fakelag="&env.FAKE_LAG;"
+#          hardsendq="&env.HARD_SENDQ;"
+#          maxchans="&env.MAX_CHANS;"
+#          pingfreq="&env.PING_FREQ;"
+#          recvq="&env.RECVQ;"
+#          softsendq="&env.SOFT_SENDQ;"
+#          threshold="&env.COMMAND_RATE_THRESHOLD;"
+#          timeout="&env.COMMAND_RATE_THRESHOLD_TIMEOUT;"
+#          usecloak="yes"
+#          useconnflood="&env.USE_CONN_FLOOD;"
+#          usednsbl="no"
+#          useident="no"
+#          resolvehostnames="no"
+#          useconnectban="no"
+#          autojoin="#blackhole"
+#          globalmax="&env.GLOBAL_MAX;"
+#          localmax="&env.LOCAL_MAX;"
+#          maxconnwarn="&env.MAX_CONN_WARN;"
+#          modes="&env.DEFAULT_USER_MODES;"
+#          name="tor"
+#          port="7001">
+
+# uncomment this line to masquerade tor users with a cloaked hostmask (uncloaked is 
+# an fc00::/7 address that corresponds to a Tor circuit ID provided via PROXY 
+# protocol)
+
+# <cloak method="hmac-sha256"
+#        suffix="onion"
+#        class="tor">
+
 <bind address="127.0.0.1"
       port="8000"
       type="httpd">
