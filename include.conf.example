@@ -15,15 +15,17 @@
 #      statshidden="no"
 #      timeout="&env.LINK_TIMEOUT;">
 
-<sslprofile certfile="/etc/ssl/inspircd/server.crt"
-            compression="no"
-            keyfile="/etc/ssl/inspircd/server.key"
+<sslprofile certfile="/etc/inspircd/custom/server.crt"
+            keyfile="/etc/inspircd/custom/server.key"
+            cafile="/etc/inspircd/custom/ca.crt"
+            crlfile="/etc/inspircd/custom/crl.pem"
+            dhfile="/etc/inspircd/custom/dh.pem"
             name="defaultssl"
             tlsv11="no"
             tlsv12="yes"
             tlsv13="yes"
-            renegotiation="no"
-            requestclientcert="no"
+            renegotiation="yes"
+            requestclientcert="yes"
             provider="gnutls">
 
 #<sslprofile certfile="/etc/inspircd/custom/server.crt"
