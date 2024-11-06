@@ -9,6 +9,7 @@
 
 # easyrsa
 On the hub:
+- cd to `easyrsa3` directory
 - `./easyrsa init-pki` 
 - `./easyrsa build-ca`
 - `./easyrsa build-server-full hub.stuff.ts.net`
