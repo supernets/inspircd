@@ -86,7 +86,7 @@
 #          recvq="&env.RECVQ;"
 #          softsendq="&env.SOFT_SENDQ;"
 #          threshold="&env.COMMAND_RATE_THRESHOLD;"
-#          timeout="&env.COMMAND_RATE_THRESHOLD_TIMEOUT;"
+#          timeout="&env.PARTIAL_CONNECT_TIMEOUT;"
 #          usecloak="yes"
 #          useconnflood="&env.USE_CONN_FLOOD;"
 #          usednsbl="no"
@@ -122,7 +122,7 @@
 #          recvq="&env.RECVQ;"
 #          softsendq="&env.SOFT_SENDQ;"
 #          threshold="&env.COMMAND_RATE_THRESHOLD;"
-#          timeout="&env.COMMAND_RATE_THRESHOLD_TIMEOUT;"
+#          timeout="&env.PARTIAL_CONNECT_TIMEOUT;"
 #          usecloak="yes"
 #          useconnflood="&env.USE_CONN_FLOOD;"
 #          usednsbl="no"
@@ -182,7 +182,7 @@
          recvq="&env.RECVQ;"
          softsendq="&env.SOFT_SENDQ;"
          threshold="&env.COMMAND_RATE_THRESHOLD;"
-         timeout="&env.COMMAND_RATE_THRESHOLD_TIMEOUT;"
+         timeout="&env.PARTIAL_CONNECT_TIMEOUT;"
          useconnflood="&env.USE_CONN_FLOOD;"
          usednsbl="&env.USE_DNSBL;"
          useident="&env.USE_IDENT;"
@@ -251,6 +251,16 @@
 <passforward cmd="SQUERY $nickrequired :IDENTIFY $nick $pass"
              forwardmsg="NOTICE $nick :*** Forwarding PASS to $nickrequired"
              nick="NICKSERV">
+
+#<strictsasl reason="Fix your SASL authentication settings and try again">
+
+<allowchannel name="*">
+
+#<autojoinident chan="#blackhole"
+#              ident="*">
+
+#<anticaps lowercase="abcdefghijklmnopqrstuvwxyz"
+#          uppercase="ABCDEFGHIJKLMNOPQRSTUVWXYZ">
 
 #<module name="account">
 

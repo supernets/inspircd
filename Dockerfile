@@ -18,23 +18,23 @@ ENV SASL_TARGET="service.lame-network.local"
 
 ENV ADMIN_PASSWORD="changeme"
 
-ENV COMMAND_RATE="128000"
+ENV COMMAND_RATE="1000"
 
 ENV FAKE_LAG="off"
 
-ENV HARD_SENDQ="1M"
+ENV HARD_SENDQ="1048576"
 
 ENV MAX_CHANS="256"
 
 ENV PING_FREQ="64"
 
-ENV RECVQ="8K"
+ENV RECVQ="4096"
 
-ENV SOFT_SENDQ="8192"
+ENV SOFT_SENDQ="4096"
 
-ENV COMMAND_RATE_THRESHOLD="128"
+ENV COMMAND_RATE_THRESHOLD="10"
 
-ENV COMMAND_RATE_THRESHOLD_TIMEOUT="16"
+ENV PARTIAL_CONNECT_TIMEOUT="16s"
 
 ENV USE_CONN_FLOOD="no"
 
@@ -412,6 +412,24 @@ ENV AUDITORIUM_OPER_CAN_SEE="yes"
 
 ENV AUDITORIUM_OP_VISIBLE="no"
 
+ENV IPV4_CLONE="32"
+
+ENV IPV6_CLONE="64"
+
+ENV ROTATE_LOG_PERIOD="86400"
+
+ENV REGEX_TYPE="ecmascript"
+
+ENV ALLOW_CORE_UNLOAD="no"
+
+ENV ANNOUNCE_INVITES="dynamic"
+
+ENV XLINEDB_SAVE_PERIOD="128s"
+
+ENV PERMCHAN_LIST_MODES="yes"
+
+ENV PERMCHANDB_SAVE_PERIOD="128s"
+
 RUN apt -y update
 
 RUN apt -y install coreutils perl git automake autoconf build-essential libpcre2-dev rapidjson-dev libcurl4-gnutls-dev libargon2-dev libmaxminddb-dev libldap2-dev rapidjson-dev libmysqlclient-dev libmysqlclient-dev default-libmysqlclient-dev libpq-dev libre2-dev gnutls-dev libsqlite3-dev libmbedtls-dev libqrencode-dev libpcre3-dev libtre-dev pkg-config libwww-perl
@@ -471,6 +489,8 @@ RUN openssl x509 -req -days 365 -in /etc/ssl/inspircd/server.csr -signkey /etc/s
 
 RUN chown -R inspircd:inspircd /etc/inspircd /etc/ssl/inspircd /var/lib/inspircd /var/log/inspircd
 
+VOLUME /etc/inspircd/custom
+
 VOLUME /etc/ssl/inspircd
 
 VOLUME /var/lib/inspircd
@@ -481,4 +501,4 @@ USER inspircd
 
 WORKDIR /
 
-CMD /usr/local/bin/inspircd -c /etc/inspircd/inspircd.conf -F
+ENTRYPOINT ["/usr/local/bin/inspircd", "-c", "/etc/inspircd/inspircd.conf", "-F"]
