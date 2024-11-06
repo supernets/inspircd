@@ -4,10 +4,10 @@
 #             server="temple.supernets.org">
 
 #<link allowmask="*"
-#      bind="100.83.238.47"
+#      bind="1.2.3.4"
 #      hidden="no"
 #      sslprofile="defaultssl"
-#      ipaddr="100.79.209.72"
+#      ipaddr="4.2.3.1"
 #      name="temple.supernets.org"
 #      port="&env.SERVER_SSL_PORT;"
 #      recvpass="&env.LINK_RECV_PASSWORD;"
@@ -169,3 +169,47 @@
 <passforward cmd="SQUERY $nickrequired :IDENTIFY $nick $pass"
              forwardmsg="NOTICE $nick :*** Forwarding PASS to $nickrequired"
              nick="NICKSERV">
+
+#<module name="account">
+
+#<module name="blockhighlight">
+
+#<module name="connectban">
+
+#<module name="connflood">
+
+#<module name="cve_2024_39844">
+
+#<module name="delayuse">
+
+#<module name="discordnick">
+
+#<module name="eventexec">
+
+#<module name="helpmode">
+
+#<module name="ipinfo_io">
+
+#<module name="ircv3_extjwt">
+
+#<module name="ldapauth">
+
+#<module name="messagelength">
+
+#<module name="multiprefix">
+
+#<module name="opmoderated">
+
+#<module name="randomidxlines">
+
+#<module name="randquote">
+
+#<module name="realnameban">
+
+#<module name="solvemsg">
+
+#<module name="sqlauth">
+
+#<module name="sqloper">
+
+#<module name="qrcode">

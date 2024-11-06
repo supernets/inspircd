@@ -7,7 +7,7 @@ services:
     image: inspi4
     network_mode: "host"
     env_file: "config.env"
-    command: /usr/local/bin/inspircd -c /etc/inspircd/inspircd.conf -F -d
+    command: /usr/local/bin/inspircd -c /etc/inspircd/inspircd.conf -F
     volumes:
       - ./custom:/etc/inspircd/custom:ro
       - ssl:/etc/ssl/inspircd
