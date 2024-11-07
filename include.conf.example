@@ -258,6 +258,8 @@
 
 <allowchannel name="*">
 
+# <restrictchans allowregistered="&env.RESTRICT_CHANS_ALLOW_REGISTERED;">
+
 #<autojoinident chan="#blackhole"
 #              ident="*">
 
