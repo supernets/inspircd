@@ -256,9 +256,13 @@
 
 #<strictsasl reason="Fix your SASL authentication settings and try again">
 
-<allowchannel name="*">
+#<module name="restrictchans">
+#<module name="restrictmsg">
+#<allowchannel name="*">
+#<restrictchans allowregistered="&env.RESTRICT_CHANS_ALLOW_REGISTERED;">
 
-# <restrictchans allowregistered="&env.RESTRICT_CHANS_ALLOW_REGISTERED;">
+#<autojoinident chan="#blackhole"
+#              ident="*">
 
 #<autojoinident chan="#blackhole"
 #              ident="*">
