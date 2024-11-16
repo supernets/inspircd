@@ -5,7 +5,7 @@ NATDPort                            0
 RunAsDaemon                         0
 DataDirectory                       /var/lib/tor
 HiddenServiceDir                    /var/lib/tor/ircd
-HiddenServicePort                   6667 127.0.0.1:19818
+HiddenServicePort                   6668 127.0.0.1:19818
 HiddenServiceMaxStreams             65535
 HiddenServiceExportCircuitID        haproxy
 CookieAuthentication                0
