@@ -1,10 +1,16 @@
+DNSPort                             0
+SocksPort                           0
+TransPort                           0
+NATDPort                            0
 RunAsDaemon                         0
 DataDirectory                       /var/lib/tor
 HiddenServiceDir                    /var/lib/tor/ircd
 HiddenServicePort                   6667 127.0.0.1:19818
-HiddenServiceMaxStreams             10240
+HiddenServiceMaxStreams             65535
 HiddenServiceExportCircuitID        haproxy
 CookieAuthentication                0
 ControlPort                         127.0.0.1:9051
 HardwareAccel                       1
-Log                                 notice stderr
+Log                                 info stderr
+HiddenServiceSingleHopMode          1
+HiddenServiceNonAnonymousMode       1

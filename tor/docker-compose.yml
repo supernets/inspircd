@@ -7,6 +7,14 @@ services:
     network_mode: "host"
     volumes:
       - data:/var/lib/inspircd
+    ulimits:
+      nofile:
+        soft: "102400"
+        hard: "102400"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "64k"
 volumes:
   data:
     name: tor_data
