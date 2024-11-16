@@ -1,0 +1,7 @@
+services:
+  haproxy:
+    restart: on-failure:3
+    build:
+      context: .
+    image: haproxy
+    network_mode: "host"

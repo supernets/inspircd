@@ -1,0 +1,12 @@
+services:
+  tor:
+    restart: on-failure:3
+    build:
+      context: .
+    image: tor
+    network_mode: "host"
+    volumes:
+      - data:/var/lib/inspircd
+volumes:
+  data:
+    name: tor_data
