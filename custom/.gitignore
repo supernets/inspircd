@@ -6,3 +6,5 @@ include.conf
 *.pem
 !ca.crt
 !crl.pem
+links.conf
+oper.conf

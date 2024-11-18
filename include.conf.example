@@ -1,19 +1,9 @@
 <include file="/etc/inspircd/codepages/rfc1459.conf">
 
-<autoconnect period="8s"
-             server="temple.supernets.org">
-
-<link allowmask="*"
-      bind="1.2.3.4"
-      hidden="no"
-      sslprofile="defaultssl"
-      ipaddr="4.2.3.1"
-      name="temple.supernets.org"
-      port="&env.SERVER_SSL_PORT;"
-      recvpass="&env.LINK_RECV_PASSWORD;"
-      sendpass="&env.LINK_SEND_PASSWORD;"
-      statshidden="no"
-      timeout="&env.LINK_TIMEOUT;">
+<include file="/etc/inspircd/custom/links.conf"
+         missingokay="yes">
+<include file="/etc/inspircd/custom/oper.conf"
+         missingokay="yes">
 
 <sslprofile certfile="/etc/inspircd/custom/server.crt"
             keyfile="/etc/inspircd/custom/server.key"
@@ -50,11 +40,6 @@
 
 <eventexec command="/bin/true"
            event="rehash">
-
-<oper host="*@*"
-      name="admin"
-      password="&env.ADMIN_PASSWORD;"
-      type="NetAdmin">
 
 <showfile endtext="End of uptime"
           file="/proc/uptime"
