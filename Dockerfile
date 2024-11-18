@@ -12,6 +12,8 @@ ENV NETWORK_NAME="LameNet"
 
 ENV STS_HOST="irc.lame-network.local"
 
+ENV SASL_REQUIRE_SSL="yes"
+
 ENV SASL_TARGET="service.lame-network.local"
 
 ENV ADMIN_PASSWORD="changeme"
