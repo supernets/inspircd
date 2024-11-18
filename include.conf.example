@@ -1,10 +1,5 @@
 <include file="/etc/inspircd/codepages/rfc1459.conf">
 
-<include file="/etc/inspircd/custom/links.conf"
-         missingokay="yes">
-<include file="/etc/inspircd/custom/oper.conf"
-         missingokay="yes">
-
 <sslprofile certfile="/etc/inspircd/custom/server.crt"
             keyfile="/etc/inspircd/custom/server.key"
             cafile="/etc/inspircd/custom/ca.crt"
