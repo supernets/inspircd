@@ -1,0 +1,20 @@
+services:
+  stunnel:
+    restart: on-failure:3
+    build:
+      context: .
+    image: stunnel
+    network_mode: "host"
+    volumes:
+      - ../custom/ca.crt:/ca.crt:ro
+      - ../custom/server.crt:/server.crt:ro
+      - ../custom/server.key:/server.key:ro
+      - ./stunnel.conf:/etc/stunnel/stunnel.conf:ro
+    ulimits:
+      nofile:
+        soft: "102400"
+        hard: "102400"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "64k"
