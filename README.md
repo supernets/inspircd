@@ -171,6 +171,21 @@ q6ihxyqviqz76xt6dcpvgidbal64ltbvptbjp4yoxyjihgmqpxugcbid.onion
          port="6668">
 ``` 
 
+This unfortunately requires two connect blocks due to how HAProxy support works on inspircd4 (this seems to work differently from inspircd3.)
+
+There is no TLS for Tor connectivity because Tor hidden services are already encrypted. There are no authorities which issue certificates 
+for `.onion` domains either. There is no reason to use TLS with a Tor hidden service. To connect to the service: 
+
+#### Onionbalance v3 
+- This is not configured, but I will consider adding it to the Tor configuration if its of interest: https://onionservices.torproject.org/apps/base/onionbalance/v3/tutorial/
+`HiddenServiceOnionbalanceInstance` would essentially allow multiple leaf servers to provide Tor access using the same `MasterOnionAddress`
+but requires a shared secret between leaf server Tor instances.
+
+```
+proxychains4 irssi 
+/connect q6ihxyqviqz76xt6dcpvgidbal64ltbvptbjp4yoxyjihgmqpxugcbid.onion 6668
+```
+
 ## Atheme services
 To configure Atheme, add the following to `custom/links.conf` on the hub server:
 
