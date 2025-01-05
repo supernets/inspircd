@@ -118,7 +118,9 @@ and also change the bind for `6697` to use the `supernets_ssl` profile:
       type="clients">
 ```
 
-### Tor hidden service 
+### Tor hidden service
+If you don't want Tor, skip to [#leaf-servers-continued](#leaf-servers-continued)
+
 Tor can be configured with HAProxy between inspircd and Tor to identify clients based on their circuit ID; therefore a ULA-based IPv6
 hostmask can be assigned to help identify each unique client: 
 
