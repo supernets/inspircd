@@ -2,7 +2,7 @@
 This docker configuration relies on the host network driver meaning it doesn't setup any internal networks or even a separate NetNS. Your 
 mileage may vary if you change the intended network driver for Docker. There are a few caveats to how this is designed: 
 
-- Some configuration is managed through `config.env` and exported to the Docker container as environment variables; This can help minimize convergence
+- Some configuration is managed through `config.env` and exported to the Docker container as environment variables; This can help with convergence of configuration 
   between hosts but results in a configuration that cannot be changed with a simple `/quote REHASH`.
 - inspircd autoloads any `.conf` file from the `custom/` directory (it's mapped into the container from the `docker-compose.yml` file.
 - Environment variables are referenced in the configuration files using `&env.ENV_VAR_NAME;` and this usage can be found throughout the configuration.  
