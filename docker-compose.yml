@@ -4,6 +4,7 @@ services:
     build:
       context: .
     image: inspi4
+    command: ${DAEMON_FLAGS}
     network_mode: "host"
     env_file: "config.env"
     volumes:
