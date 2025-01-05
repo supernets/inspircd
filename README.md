@@ -270,6 +270,11 @@ Note that it does not specify TLS in this case, that's provided with `stunnel`:
 - `docker-compose up -d`
 - Refer to https://github.com/supernets/atheme/tree/master for Atheme configuration instructions.
 
+# Administration 
+- OPER: `/oper admin <password for admin user in config.env>`
+- OJOIN Override any channel restriction to join: `/quote ojoin #services`
+- SNOMASKS are configured to log to `#opers`
+
 # TODO
 - The `password_hash` in conjunction with the `PBKDF` module can be used to produce hashed passwords which can be used in configuration: https://docs.inspircd.org/3/modules/password_hash/ this unfortunately as it is now assumes that you already have a server running and can use `/MKPASSWD` to create passwords.
 
