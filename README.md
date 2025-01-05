@@ -202,8 +202,7 @@ This unfortunately requires two connect blocks due to how HAProxy support works 
 `HiddenServiceOnionbalanceInstance` would essentially allow multiple leaf servers to provide Tor access using the same `MasterOnionAddress`
 but requires a shared secret between leaf server Tor instances.
 
-There is no TLS for Tor connectivity because Tor hidden services are already encrypted. There are no authorities which issue certificates 
-for `.onion` domains either. There is no reason to use TLS with a Tor hidden service. To connect to the service: 
+There is no TLS for Tor connectivity because Tor hidden services are already encrypted end-to-end. To connect to the hidden service: 
 
 ```
 proxychains4 irssi 
