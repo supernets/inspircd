@@ -13,17 +13,6 @@
             requestclientcert="yes"
             provider="gnutls">
 
-<sslprofile certfile="/etc/inspircd/custom/irc.crt"
-            keyfile="/etc/inspircd/custom/irc.key"
-            cafile="/etc/inspircd/custom/irc.ca.crt"
-            name="supernets_ssl"
-            tlsv11="no"
-            tlsv12="yes"
-            tlsv13="yes"
-            renegotiation="yes"
-            requestclientcert="yes"
-            provider="gnutls">
-
 <exception host="*@100.64.0.0/10"
            reason="tailscale network">
 
@@ -103,7 +92,7 @@
 
  <bind address="*"
       port="&env.SSL_PORT;"
-      sslprofile="supernets_ssl"
+      sslprofile="defaultssl"
       type="clients">
 
 <bind address="*"
