@@ -218,6 +218,11 @@ proxychains4 irssi
 /connect q6ihxyqviqz76xt6dcpvgidbal64ltbvptbjp4yoxyjihgmqpxugcbid.onion 6668
 ```
 
+## Leaf (continued) 
+- chown -R 999 custom/
+- docker-compose build
+- docker-compose up -d
+
 ## Atheme services
 To configure Atheme, add the following to `custom/links.conf` on the hub server:
 
