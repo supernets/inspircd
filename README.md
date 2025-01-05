@@ -218,6 +218,21 @@ proxychains4 irssi
 /connect q6ihxyqviqz76xt6dcpvgidbal64ltbvptbjp4yoxyjihgmqpxugcbid.onion 6668
 ```
 
+After connecting the user will have an address that is unique to the circuit ID that is in use:
+
+```
+1:08 -!- sq_ [~stelleri@4m4l237j:f6jtvjrf:n6du6chj:hidden]
+11:08 -!-  ircname  : User irc
+11:08 -!-  hostname : ~irc@fc00:dead:beef:4dad::5e fc00:dead:beef:4dad::5e
+11:08 -!-  channels : #tor
+11:08 -!-  server   : miami.supernets.org [internet relay chat network]
+11:08 -!-  modes    : +ix
+11:08 -!-           : * is connecting from an unknown autonomous system
+11:08 -!-           : * is connecting from an unknown country
+11:08 -!-  idle     : 0 days 0 hours 46 mins 44 secs [signon: Sun Jan  5 17:22:28 2025]
+11:08 -!- End of WHOIS
+```
+
 ## Leaf servers (continued) 
 - chown -R 999 custom/
 - docker-compose build
