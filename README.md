@@ -111,6 +111,19 @@ docker exec -it tor-tor-1 cat /var/lib/tor/ircd/hostname
 q6ihxyqviqz76xt6dcpvgidbal64ltbvptbjp4yoxyjihgmqpxugcbid.onion
 ```
 
+HAProxy is necessary in this case because Tor's `HiddenServiceExportCircuitID` uses PROXY protocol v1 and inspircd uses PROXY protocol v2, HAProxy supports both: 
+
+```
+frontend tor-north
+  bind                 127.0.0.1:19818 accept-proxy
+  mode                 tcp
+  default_backend      inspircd-south
+
+backend inspircd-south
+  mode   tcp
+  server inspircd 127.0.0.1:7001 send-proxy-v2
+```
+
 - cd to `haproxy/`
 - `docker-compose up -d`
 - By default, the inspircd `include.conf` should already provide the necessary configuration:
