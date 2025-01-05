@@ -79,6 +79,10 @@ create a `custom/links.conf`. The following describes a declaration for a leaf c
 - Copy certificate and key as well as `ca.crt` and `dh.pem` from the `easyrsa3` CA (probably located on the hub server) to
 the leaf server (these files go in `custom/` and should also be named `server.crt` and `server.key`.)
 
+### Uplink (to hub)
+Currently, this is setup for the hub to uplink to leaf servers, but the opposite can be provided with a `<link>` block in the
+`include.conf`.
+
 ### External TLS
 - Copy your issued certificate and key to `custom/irc.crt` and `custom/irc.key` respectively
 - Add the following to `custom/include.conf`: 
