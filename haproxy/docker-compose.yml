@@ -5,3 +5,5 @@ services:
       context: .
     image: haproxy
     network_mode: "host"
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
