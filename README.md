@@ -14,7 +14,8 @@ When editing configuration, use generated passwords everywhere possible:
 echo $(dd if=/dev/urandom bs=1024 count=1 status=none | sha256sum | base64 | head -c 64
 ```
 
-Some passwords need to be consistent (uplink send/recv passwords for example) across servers.
+Some passwords need to be consistent (uplink send/recv passwords for example) across servers. A subject for improvement would be not using the environment
+for unencrypted passwords, see [#TODO](#TODO) section for more info on how this can be improved. 
 
 ## Hub
 - copy `config.env.example` to `config.env` and edit 
@@ -246,3 +247,12 @@ Note that it does not specify TLS in this case, that's provided with `stunnel`:
 - `docker-compose build`
 - `docker-compose up -d`
 - Refer to https://github.com/supernets/atheme/tree/master for Atheme configuration instructions.
+
+# TODO
+- The `password_hash` in conjunction with the `PBKDF` module can be used to produce hashed passwords which can be used in configuration: https://docs.inspircd.org/3/modules/password_hash/ this unfortunately as it is now assumes that you already have a server running and can use `/MKPASSWD` to create passwords.
+
+- Using `docker-compose up --no-start` will create the container but not start it. This is useful if prior to starting the container more configuration needs
+  needs to be completed, it maps all of the volumes / files needed, etc. This also allows you to use `docker-compose run` on the created container, but won't
+  start the container; for running one-off commands that are not pertinent to the container's primary purpose. If inspircd provided some functionality like
+  creating password hashes or generating certificates from the inspircd executable this would be really useful.
+  
