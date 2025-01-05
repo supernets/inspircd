@@ -278,6 +278,7 @@ Note that it does not specify TLS in this case, that's provided with `stunnel`:
 ## Debugging 
 - To start inspircd with debugging, add `-d` to `DAEMON_FLAGS` in `config.env`
 - `docker-compose up -d`
+- `docker logs -f inspircd-ircd-1`
 
 # TODO
 - The `password_hash` in conjunction with the `PBKDF` module can be used to produce hashed passwords which can be used in configuration: https://docs.inspircd.org/3/modules/password_hash/ this unfortunately as it is now assumes that you already have a server running and can use `/MKPASSWD` to create passwords.
