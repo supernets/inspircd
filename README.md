@@ -271,7 +271,7 @@ Note that it does not specify TLS in this case, that's provided with `stunnel`:
 - Refer to https://github.com/supernets/atheme/tree/master for Atheme configuration instructions.
 
 # Administration 
-- OPER: `/oper admin <password for admin user in config.env>`
+- OPER: `/oper admin <password@config.env>`
 - OJOIN Override any channel restriction to join: `/quote ojoin #services`
 - SNOMASKS are configured to log to `#opers`
 
