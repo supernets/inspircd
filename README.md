@@ -7,7 +7,15 @@ mileage may vary if you change the intended network driver for Docker. There are
 - inspircd autoloads any `.conf` file from the `custom/` directory (it's mapped into the container from the `docker-compose.yml` file.
 - Environment variables are referenced in the configuration files using `&env.ENV_VAR_NAME;` and this usage can be found throughout the configuration.  
 - Changing the `config.env` means that the container must be re-created: `docker-compose up -d`
-  
+
+When editing configuration, use generated passwords everywhere possible: 
+
+```
+echo $(dd if=/dev/urandom bs=1024 count=1 status=none | sha256sum | base64 | head -c 64
+```
+
+Some passwords need to be consistent (uplink send/recv passwords for example) across servers.
+
 ## Hub
 - copy `config.env.example` to `config.env` and edit 
 - copy `include.conf.example` to `custom/include.conf` and edit (don't delete) as much as possible for now
