@@ -15,7 +15,7 @@ mileage may vary if you change the intended network driver for Docker. There are
 ### Internal TLS
 The following steps describe how to setup `easyrsa3` for internal TLS. This step is necessary regardless of whether you intended to use
 issued certificates for leaf servers because it provides TLS encryption between the hub and it's leaf servers and between services. Refer
-to the external TLS section for leaf servers for more info. To bootstrap internal TLS with an `easyrsa3` CA perform the following:
+to the [#external-tls] section under leaf servers for more info. To bootstrap internal TLS with an `easyrsa3` CA perform the following:
 
 - cd to `easyrsa3` directory
 - `./easyrsa init-pki`
