@@ -9,5 +9,5 @@ services:
     env_file: "config.env"
     volumes:
       - ./custom:/etc/inspircd/custom:ro
-      - ./data:/var/lib/inspircd
-      - ./log:/var/log/inspircd
+      - ./data:/var/lib/inspircd:rw
+      - ./log:/var/log/inspircd:rw
